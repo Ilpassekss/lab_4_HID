@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <title>Filters</title>
+  <style>
+    body {
+      margin: 0;
+      margin-top: 200px;
+      padding: 0;
+      background-color: #333333;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .filter-group {
+      margin-bottom: 20px;
+    }
+    .filter-group h3 {
+      margin-bottom: 10px;
+    }
+    .filter-items {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .filter-item {
+      background-color: #555555;
+      color: #ffffff;
+      padding: 5px 10px;
+      border-radius: 20px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Filters</h1>
+    <div style="float: left'''''">
+      <button type="button" class="btn btn-warning" id="selectFiltersBtn">Select Filters</button>
+      <button type="button" class="btn btn-warning" id="clearFiltersBtn">Clear Filters</button>
+      <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+    </div>
+  </div>
+  <div class="filters">
+    <div class="filter-group">
+      <h3>Today, 30 April</h3>
+    </div>
+    <div class="filter-group">
+      <h3>Genre </h3>
+      <div class="filter-items">
+        <div class="filter-item" >Comedy (6)</div>
+        <div class="filter-item">Action (4)</div>
+        <div class="filter-item">Family (1)</div>
+        <div class="filter-item">Thriller (2)</div>
+        <div class="filter-item">Horror (2)</div>
+        <div class="filter-item">Adventure (6)</div>
+        <div class="filter-item">Animation (4)</div>
+        <div class="filter-item">Fantasy (3)</div>
+      </div>
+    </div>
+    <div class="filter-group">
+      <h3>Format, VIP </h3>
+      <div class="filter-items">
+        <div class="filter-item"> 2D Format (39)</div>
+        <div class="filter-item">VIP-hall (4)</div>
+        <div class="filter-item">4DX (4)</div>
+      </div>
+    </div>
+    <div class="filter-group">
+      <h3>Actions</h3>
+      <div class="filter-items">
+        <div class="filter-item">In this yesr (3)</div>
+        <div class="filter-item">Watch Ukrainian (1)</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Получаем кнопки для выбора фильтров
+    const selectFiltersBtn = document.getElementById("selectFiltersBtn");
+    const clearFiltersBtn = document.getElementById("clearFiltersBtn");
+
+    // Получаем все элементы фильтров
+    const filterItems = document.querySelectorAll(".filter-item");
+
+    // Добавляем обработчик события клика на кнопки
+    selectFiltersBtn.addEventListener("click", function() {
+      // Добавляем класс "selected" ко всем элементам фильтров
+      filterItems.forEach(item => item.classList.add("selected"));
+    });
+
+    clearFiltersBtn.addEventListener("click", function() {
+      // Удаляем класс "selected" у всех элементов фильтров
+      filterItems.forEach(item => item.classList.remove("selected"));
+    });
+
+    // Добавляем обработчик события клика на элементы фильтров
+    filterItems.forEach(item => {
+      item.addEventListener("click", function() {
+        // Удаляем класс "selected" у всех элементов фильтров
+        filterItems.forEach(item => item.classList.remove("selected"));
+        // Добавляем класс "selected" только к текущему элементу
+        this.classList.add("selected");
+      });
+    });
+  });
+</script>
+</body>
+</html>
