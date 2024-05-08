@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -11,6 +12,48 @@
 
 
     <style>
+        /* Для маленьких экранов */
+        @media (max-width: 576px) {
+            /* Стили для маленьких экранов */
+            .grid-container {
+                grid-template-columns: 1fr; /* Один столбец */
+            }
+            /* Другие стили для маленьких экранов */
+        }
+
+        /* Для средних экранов */
+        @media (min-width: 577px) and (max-width: 992px) {
+            /* Стили для средних экранов */
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr); /* Два столбца */
+            }
+            /* Другие стили для средних экранов */
+        }
+
+        /* Для больших экранов */
+        @media (min-width: 993px) {
+            /* Стили для больших экранов */
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr); /* Два столбца */
+            }
+            /* Другие стили для больших экранов */
+        }
+
+        .main_part {
+            width: 80vw; /* 80% ширины viewport */
+            height: 100vh; /* 100% высоты viewport */
+            padding: 1rem; /* 1 rem = 16px (по умолчанию) */
+        }
+
+
+
+        img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover; /* Сохранение пропорций изображения */
+        }
+
+
         body{
             background-image: url("www/main_page.jpg");
             background-repeat: no-repeat;
@@ -67,6 +110,7 @@
 
         .grid-container {
             display: grid;
+            
             grid-template-columns: repeat(2, 1fr); /* Два столбца */
             gap: 10px; /* Расстояние между элементами */
         }
@@ -96,8 +140,16 @@
             display: inline-block;
             color: white;
 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
         }
 
+        header button select{
+            min-width: 100px; /* Adjust as needed */
+            /* Other button styles */
+        }
 
         /*web-site boddom */
         .boddom_part{
@@ -109,35 +161,112 @@
             padding-bottom: 5px;
             background-color: white;
         }
+
+        @media (max-width: 768px) {
+            header {
+                flex-wrap: wrap; /* Перенос элементов на новую строку */
+                justify-content: center; /* Центрирование элементов */
+            }
+
+            header div {
+                margin: 10px 0; /* Отступы между элементами */
+                text-align: center; /* Центрирование текста */
+            }
+        }
+
+        @media (max-width: 460px) {
+            /* Стили для экранов шириной 320px и меньше */
+
+            /* Скрыть изображение логотипа */
+            header img {
+                display: none;
+            }
+
+            /* Уменьшить размер шрифта заголовка */
+            header p {
+                font-size: 32px;
+            }
+
+            /* Изменить размер и расположение кнопок в заголовке */
+            header div:last-child {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            header button,
+            header select {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            /* Изменить размер и расположение кнопок в панели фильтров */
+            .filters_part {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+            }
+
+            .filters_part div {
+                width: 100%;
+                margin: 5px 0;
+                text-align: center;
+            }
+
+            /* Изменить размер и расположение карточек с фильмами */
+            .grid-container {
+                grid-template-columns: 1fr; /* Одна колонка */
+            }
+
+            .card {
+                width: 100%;
+            }
+
+            .card-img-top {
+                height: 30vh; /* Уменьшить высоту изображения */
+            }
+
+            .card-body {
+                height: auto;
+            }
+
+            .card-title,
+            .card-text {
+                font-size: 14px; /* Уменьшить размер шрифта */
+            }
+
+            .list-group-item {
+                font-size: 12px; /* Уменьшить размер шрифта */
+            }
+        }
+
     </style>
 </head>
 <body>
+<header>
+    <div style="float: left; display: flex; align-items: center;">
+        <img src="www/Group%20120.png" style="vertical-align: middle; width: 15%; height: 15%">
+        <p style="font-family: Candara; font-size: 48px; margin: 0;">Movie Town</p>
+    </div>
 
-    <header>
-        <div style="float: left; display: flex; align-items: center;">
-            <img src="www/Group%20120.png" style="vertical-align: middle; width: 15%; height: 15%">
-            <p style="font-family: Candara; font-size: 48px; margin: 0;">Movie Town</p>
-        </div>
+    <div style="float: right; display: flex; align-items: center; padding: 5px; height: 100%; width: auto; font-family: Candara">
 
-        <div style="float: right; display: flex; align-items: center; padding: 5px; height: 100%; width: 30%; font-family: Candara">
-
-                    <select class="form-select" aria-label="Default select example"  >
-                        <option selected>Kiyv, Ocean Plaza Mall </option>
-                        <option value="1">Odesa, FontanSky Center </option>
-                        <option value="2">Vinnytsa, Megamall </option>
-                    </select>
+        <select class="form-select" aria-label="Default select example"  style="width: 200px" >
+            <option selected>Kiyv, Ocean Plaza Mall </option>
+            <option value="1">Odesa, FontanSky Center </option>
+            <option value="2">Vinnytsa, Megamall </option>
+        </select>
 
 
-                <button type="button" class="btn btn-warning" style="margin: 5px; height: 40%; width: 25%" onclick="window.location.href = 'www/registration.html';">Log In</button>
-                <button type="button" class="btn btn-warning" style="height: 40%; width: 25%">FAQ</button>
-        </div>
-    </header>
+        <button type="button" class="btn btn-warning" style="margin: 5px; height: 40%; width: 100px" onclick="window.location.href = 'www/registration.html';">Log In</button>
+        <button type="button" class="btn btn-warning" style="height: 40%; width: 100px">FAQ</button>
+    </div>
+</header>
 
-    <div class="filters_part" >
+<div class="filters_part" >
 
-        <div style="display: flex; float: left; align-items: center; font-family: Candara; height: 100%">
+    <div style="display: flex; float: left; align-items: center; font-family: Candara; height: 100%">
 
-            <button style="font-size: 26px; text-transform: uppercase ;
+        <button style="font-size: 26px; text-transform: uppercase ;
             align-items: center;
             height: 80%;
             background: none;
@@ -149,7 +278,7 @@
             cursor: pointer;
             outline: inherit;"> In cinemas now</button>
 
-            <button style="font-size: 20px; text-transform: uppercase ; width: 100px;
+        <button style="font-size: 20px; text-transform: uppercase ; width: 100px;
                 align-items: center;
                 height: 100%;
                 background: none;
@@ -160,10 +289,10 @@
                 margin-bottom: 10px;
                 cursor: pointer;
                 outline: inherit;" onclick="window.location.href = 'www/filter_page.html';"> <img src="www/F_ico.png" style=" width: 20%; height: 50%"> Filters</button>
-        </div>
+    </div>
 
-        <div style="display: flex; float: right; align-items: center; font-family: Candara; height: 100%">
-            <button id="dateButton" STYLE="text-transform: uppercase;
+    <div style="display: flex; float: right; align-items: center; font-family: Candara; height: 100%">
+        <button id="dateButton" STYLE="text-transform: uppercase;
                 font-size: 20px;
                 align-items: center;
                 height: 100%;
@@ -176,7 +305,7 @@
                 cursor: pointer;
                 outline: inherit;">Today </button>
 
-            <button STYLE="text-transform: uppercase;
+        <button STYLE="text-transform: uppercase;
                 font-size: 20px;
                 align-items: center;
                 height: 100%;
@@ -188,150 +317,51 @@
                 margin-bottom: 10px;
                 cursor: pointer;
                 outline: inherit;">SESSION SHELDULE</button>
-        </div>
-
     </div>
 
-    <div class="main_part">
+</div>
 
-        <div class="grid-container">
+<div class="main_part">
 
-            <div class="card grid-item" style="width: 100%; height: 50vh; margin-bottom: 10px; display: inline-block; overflow: hidden">
-                <img src="www/the_fall_guy_pic22_ua.jpg" class="card-img-top" alt="" style="width: 45%;height: 100%; float: left; border-radius: 5px">
+    <div class="grid-container">
 
-                <div class="card-body" style="width: 50%; float: left; text-align: center; align-content: center; display: block; ">
-                    <p class="card-text">
-                        <h3>The Fall Guy</h3>
-                        <h6>12+ Comedy, Action</h6>
-                    <button id="dateButton1" STYLE="text-transform: uppercase;
-                        font-size: 20px;
-                        align-items: center;
-                        height: 100%;
-                        background: none;
-                        color: inherit;
-                        border: none;
-                        padding: 0;
-                        margin: 10px;
-                        margin-bottom: 10px;
-                        cursor: pointer;
-                        outline: inherit;">Today </button>
-                    </p>
-
-                    <div style="height: 5vh; width: 80%; border-radius: 25px; background-color: #f57f0a;
-                     margin: 10px auto;  text-align: left; align-content: center; padding-left: 5px; overflow: hidden;">
-                        <div style="height: 3vh; width: 50%; padding-left: 10px; padding-top: 7px; background-color: none; float: left;text-align: left; float: right">
-                            <p style="font-family: Arial; font-size: 16px; " >$ 5/2D</p>
-                        </div>
-                        <div style="height: 4vh; width: 50%; border-radius: 20px; padding-top:6px; background-color: #ffffff; float: left; text-align: center ">
-                            11.00-13.00
-                        </div>
-                    </div>
-
-                    <div style="height: 5vh; width: 80%; border-radius: 25px; background-color: #f57f0a;
-                     margin: 10px auto;  text-align: left; align-content: center; padding-left: 5px; overflow: hidden;">
-                        <div style="height: 3vh; width: 50%; padding-left: 10px; padding-top: 7px; background-color: none; float: left;text-align: left; float: right">
-                            <p style="font-family: Arial; font-size: 16px; " >$ 5/2D</p>
-                        </div>
-                        <div style="height: 4vh; width: 50%; border-radius: 20px; padding-top:6px; background-color: #ffffff; float: left; text-align: center ">
-                            11.00-13.00
-                        </div>
-                    </div>
-
-                    <div style="height: 5vh; width: 80%; border-radius: 25px; background-color: #f57f0a;
-                     margin: 10px auto;  text-align: left; align-content: center; padding-left: 5px; overflow: hidden;">
-                        <div style="height: 3vh; width: 50%; padding-left: 10px; padding-top: 7px; background-color: none; float: left;text-align: left; float: right">
-                            <p style="font-family: Arial; font-size: 16px; " >$ 5/2D</p>
-                        </div>
-                        <div style="height: 4vh; width: 50%; border-radius: 20px; padding-top:6px; background-color: #ffffff; float: left; text-align: center ">
-                            11.00-13.00
-                        </div>
-                    </div>
-
-                    <div style="height: 5vh; width: 80%; border-radius: 25px; background-color: #f57f0a;
-                     margin: 10px auto;  text-align: left; align-content: center; padding-left: 5px; overflow: hidden;">
-                        <div style="height: 3vh; width: 50%; padding-left: 10px; padding-top: 7px; background-color: none; float: left;text-align: left; float: right">
-                            <p style="font-family: Arial; font-size: 16px; " >$ 5/2D</p>
-                        </div>
-                        <div style="height: 4vh; width: 50%; border-radius: 20px; padding-top:6px; background-color: #ffffff; float: left; text-align: center ">
-                            11.00-13.00
-                        </div>
-                    </div>
-
-                </div>
+        <div class="card" style="width:100%;">
+            <img src="www/photo.jpg" class="card-img-top" alt="..." style="height: 50%">
+            <div class="card-body" style="height: 10vh; display: flex; flex-direction: column; justify-content: center;">
+                <h5 class="card-title" style="margin: 0;">Fall Guy</h5>
+                <p class="card-text" style="margin: 0;">12+ Comedy, Action</p>
             </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">11.00-13.00 $ 5/2D</li>
+                <li class="list-group-item">11.00-13.00 $ 5/2D</li>
+                <li class="list-group-item">11.00-13.00 $ 5/2D</li>
+                <li class="list-group-item">11.00-13.00 $ 5/2D</li>
+            </ul>
+        </div>
 
-            <div class="card grid-item" style="width: 100%; height: 50vh; margin-bottom: 10px; display: inline-block; overflow: hidden">
-                <img src="www/the_fall_guy_pic22_ua.jpg" class="card-img-top" alt="" style="width: 45%;height: 100%; float: left; border-radius: 5px">
-
-                <div class="card-body" style="width: 50%; float: left; text-align: center; align-content: center; display: block; ">
-                    <p class="card-text">
-                    <h3>The Fall Guy</h3>
-                    <h6>12+ Comedy, Action</h6>
-                    <button id="dateButton1" STYLE="text-transform: uppercase;
-                        font-size: 20px;
-                        align-items: center;
-                        height: 100%;
-                        background: none;
-                        color: inherit;
-                        border: none;
-                        padding: 0;
-                        margin: 10px;
-                        margin-bottom: 10px;
-                        cursor: pointer;
-                        outline: inherit;">Today </button>
-                    </p>
-
-                    <div style="height: 5vh; width: 80%; border-radius: 25px; background-color: #f57f0a;
-                     margin: 10px auto;  text-align: left; align-content: center; padding-left: 5px; overflow: hidden;">
-                        <div style="height: 3vh; width: 50%; padding-left: 10px; padding-top: 7px; background-color: none; float: left;text-align: left; float: right">
-                            <p style="font-family: Arial; font-size: 16px; " >$ 5/2D</p>
-                        </div>
-                        <div style="height: 4vh; width: 50%; border-radius: 20px; padding-top:6px; background-color: #ffffff; float: left; text-align: center ">
-                            11.00-13.00
-                        </div>
-                    </div>
-
-                    <div style="height: 5vh; width: 80%; border-radius: 25px; background-color: #f57f0a;
-                     margin: 10px auto;  text-align: left; align-content: center; padding-left: 5px; overflow: hidden;">
-                        <div style="height: 3vh; width: 50%; padding-left: 10px; padding-top: 7px; background-color: none; float: left;text-align: left; float: right">
-                            <p style="font-family: Arial; font-size: 16px; " >$ 5/2D</p>
-                        </div>
-                        <div style="height: 4vh; width: 50%; border-radius: 20px; padding-top:6px; background-color: #ffffff; float: left; text-align: center ">
-                            11.00-13.00
-                        </div>
-                    </div>
-
-                    <div style="height: 5vh; width: 80%; border-radius: 25px; background-color: #f57f0a;
-                     margin: 10px auto;  text-align: left; align-content: center; padding-left: 5px; overflow: hidden;">
-                        <div style="height: 3vh; width: 50%; padding-left: 10px; padding-top: 7px; background-color: none; float: left;text-align: left; float: right">
-                            <p style="font-family: Arial; font-size: 16px; " >$ 5/2D</p>
-                        </div>
-                        <div style="height: 4vh; width: 50%; border-radius: 20px; padding-top:6px; background-color: #ffffff; float: left; text-align: center ">
-                            11.00-13.00
-                        </div>
-                    </div>
-
-                    <div style="height: 5vh; width: 80%; border-radius: 25px; background-color: #f57f0a;
-                     margin: 10px auto;  text-align: left; align-content: center; padding-left: 5px; overflow: hidden;">
-                        <div style="height: 3vh; width: 50%; padding-left: 10px; padding-top: 7px; background-color: none; float: left;text-align: left; float: right">
-                            <p style="font-family: Arial; font-size: 16px; " >$ 5/2D</p>
-                        </div>
-                        <div style="height: 4vh; width: 50%; border-radius: 20px; padding-top:6px; background-color: #ffffff; float: left; text-align: center ">
-                            11.00-13.00
-                        </div>
-                    </div>
-
-                </div>
+        <div class="card" style="width:100%;">
+            <img src="www/photo.jpg" class="card-img-top" alt="..." style="height: 50%">
+            <div class="card-body" style="height: 10vh; display: flex; flex-direction: column; justify-content: center;">
+                <h5 class="card-title" style="margin: 0;">Fall Guy</h5>
+                <p class="card-text" style="margin: 0;">12+ Comedy, Action</p>
             </div>
-
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">11.00-13.00 $ 5/2D</li>
+                <li class="list-group-item">11.00-13.00 $ 5/2D</li>
+                <li class="list-group-item">11.00-13.00 $ 5/2D</li>
+                <li class="list-group-item">11.00-13.00 $ 5/2D</li>
+            </ul>
         </div>
 
 
     </div>
 
-    <div class="boddom_part">
 
-    </div>
+</div>
+
+<div class="boddom_part">
+
+</div>
 
 
 </main>
