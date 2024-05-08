@@ -1,0 +1,399 @@
+
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+
+    <style>
+        /* Для маленьких экранов */
+        @media (max-width: 576px) {
+            /* Стили для маленьких экранов */
+            .grid-container {
+                grid-template-columns: 1fr; /* Один столбец */
+            }
+            /* Другие стили для маленьких экранов */
+        }
+
+        /* Для средних экранов */
+        @media (min-width: 577px) and (max-width: 992px) {
+            /* Стили для средних экранов */
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr); /* Два столбца */
+            }
+            /* Другие стили для средних экранов */
+        }
+
+        /* Для больших экранов */
+        @media (min-width: 993px) {
+            /* Стили для больших экранов */
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr); /* Два столбца */
+            }
+            /* Другие стили для больших экранов */
+        }
+
+        .main_part {
+            width: 80vw; /* 80% ширины viewport */
+            height: 100vh; /* 100% высоты viewport */
+            padding: 1rem; /* 1 rem = 16px (по умолчанию) */
+        }
+
+
+
+        img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover; /* Сохранение пропорций изображения */
+        }
+
+
+        body{
+            background-image: url("www/main_page.jpg");
+            background-repeat: no-repeat;
+            background-position: center center; /* Positions the image in the center */
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        /*webpage header style */
+        header {
+            position: relative;
+            z-index: 1;
+            background-color: #dcdcdc;
+
+            padding: 10px;
+            overflow: auto;
+
+            display: flex;
+            justify-content: space-between; /* Чтобы элементы были выровнены по краям */
+            align-items: center;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container input {
+            padding: 5px;
+            border: none;
+            border-radius: 3px;
+        }
+
+        .search-container button {
+            background-color: #004d40;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        /*main page part css*/
+        .main_part{
+            height: 200vh ;
+            width: 80%;
+            position: relative;
+            margin: 0 auto;
+            z-index: 1;
+            background-color: rgba(225, 225, 225, 0.7);
+            position: relative;
+            padding: 10px;
+            overflow: auto;
+        }
+
+        .grid-container {
+            display: grid;
+            
+            grid-template-columns: repeat(2, 1fr); /* Два столбца */
+            gap: 10px; /* Расстояние между элементами */
+        }
+        @media (max-width: 1200px) {
+            .grid-container {
+                display: block;
+                grid-template-columns: repeat(2, 1fr); /* Два столбца */
+                gap: 10px; /* Расстояние между элементами */
+            }
+        }
+
+        .grid-item {
+            border: 1px solid #000;
+            padding: 10px;
+        }
+
+        /*filters part*/
+        .filters_part{
+            width: 100%;
+            height: 60px;
+            padding-right: 20px;
+            padding-left: 20px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            align-items: center;
+            background-color: #f57f0a;
+            display: inline-block;
+            color: white;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+        header button select{
+            min-width: 100px; /* Adjust as needed */
+            /* Other button styles */
+        }
+
+        /*web-site boddom */
+        .boddom_part{
+            width: 100%;
+            height: 100px;
+            padding-right: 20px;
+            padding-left: 20px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            background-color: white;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-wrap: wrap; /* Перенос элементов на новую строку */
+                justify-content: center; /* Центрирование элементов */
+            }
+
+            header div {
+                margin: 10px 0; /* Отступы между элементами */
+                text-align: center; /* Центрирование текста */
+            }
+        }
+
+        @media (max-width: 460px) {
+            /* Стили для экранов шириной 320px и меньше */
+
+            /* Скрыть изображение логотипа */
+            header img {
+                display: none;
+            }
+
+            /* Уменьшить размер шрифта заголовка */
+            header p {
+                font-size: 32px;
+            }
+
+            /* Изменить размер и расположение кнопок в заголовке */
+            header div:last-child {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            header button,
+            header select {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            /* Изменить размер и расположение кнопок в панели фильтров */
+            .filters_part {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+            }
+
+            .filters_part div {
+                width: 100%;
+                margin: 5px 0;
+                text-align: center;
+            }
+
+            /* Изменить размер и расположение карточек с фильмами */
+            .grid-container {
+                grid-template-columns: 1fr; /* Одна колонка */
+            }
+
+            .card {
+                width: 100%;
+            }
+
+            .card-img-top {
+                height: 30vh; /* Уменьшить высоту изображения */
+            }
+
+            .card-body {
+                height: auto;
+            }
+
+            .card-title,
+            .card-text {
+                font-size: 14px; /* Уменьшить размер шрифта */
+            }
+
+            .list-group-item {
+                font-size: 12px; /* Уменьшить размер шрифта */
+            }
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <div style="float: left; display: flex; align-items: center;">
+        <img src="www/Group%20120.png" style="vertical-align: middle; width: 15%; height: 15%">
+        <p style="font-family: Candara; font-size: 48px; margin: 0;">Movie Town</p>
+    </div>
+
+    <div style="float: right; display: flex; align-items: center; padding: 5px; height: 100%; width: auto; font-family: Candara">
+
+        <select class="form-select" aria-label="Default select example"  style="width: 200px" >
+            <option selected>Kiyv, Ocean Plaza Mall </option>
+            <option value="1">Odesa, FontanSky Center </option>
+            <option value="2">Vinnytsa, Megamall </option>
+        </select>
+
+
+        <button type="button" class="btn btn-warning" style="margin: 5px; height: 40%; width: 100px" onclick="window.location.href = 'www/registration.html';">Log In</button>
+        <button type="button" class="btn btn-warning" style="height: 40%; width: 100px">FAQ</button>
+    </div>
+</header>
+
+<div class="filters_part" >
+
+    <div style="display: flex; float: left; align-items: center; font-family: Candara; height: 100%">
+
+        <button style="font-size: 26px; text-transform: uppercase ;
+            align-items: center;
+            height: 80%;
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            margin: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            outline: inherit;"> In cinemas now</button>
+
+        <button style="font-size: 20px; text-transform: uppercase ; width: 100px;
+                align-items: center;
+                height: 100%;
+                background: none;
+                color: inherit;
+                border: none;
+                padding: 0;
+                margin: 10px;
+                margin-bottom: 10px;
+                cursor: pointer;
+                outline: inherit;" onclick="window.location.href = 'www/filter_page.html';"> <img src="www/F_ico.png" style=" width: 20%; height: 50%"> Filters</button>
+    </div>
+
+    <div style="display: flex; float: right; align-items: center; font-family: Candara; height: 100%">
+        <button id="dateButton" STYLE="text-transform: uppercase;
+                font-size: 20px;
+                align-items: center;
+                height: 100%;
+                background: none;
+                color: inherit;
+                border: none;
+                padding: 0;
+                margin: 10px;
+                margin-bottom: 10px;
+                cursor: pointer;
+                outline: inherit;">Today </button>
+
+        <button STYLE="text-transform: uppercase;
+                font-size: 20px;
+                align-items: center;
+                height: 100%;
+                background: none;
+                color: inherit;
+                border: none;
+                padding: 0;
+                margin: 10px;
+                margin-bottom: 10px;
+                cursor: pointer;
+                outline: inherit;">SESSION SHELDULE</button>
+    </div>
+
+</div>
+
+<div class="main_part">
+
+    <div class="grid-container">
+
+        <div class="card" style="width:100%;">
+            <img src="www/photo.jpg" class="card-img-top" alt="..." style="height: 50%">
+            <div class="card-body" style="height: 10vh; display: flex; flex-direction: column; justify-content: center;">
+                <h5 class="card-title" style="margin: 0;">Fall Guy</h5>
+                <p class="card-text" style="margin: 0;">12+ Comedy, Action</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">11.00-13.00 $ 5/2D</li>
+                <li class="list-group-item">11.00-13.00 $ 5/2D</li>
+                <li class="list-group-item">11.00-13.00 $ 5/2D</li>
+                <li class="list-group-item">11.00-13.00 $ 5/2D</li>
+            </ul>
+        </div>
+
+        <div class="card" style="width:100%;">
+            <img src="www/photo.jpg" class="card-img-top" alt="..." style="height: 50%">
+            <div class="card-body" style="height: 10vh; display: flex; flex-direction: column; justify-content: center;">
+                <h5 class="card-title" style="margin: 0;">Fall Guy</h5>
+                <p class="card-text" style="margin: 0;">12+ Comedy, Action</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">11.00-13.00 $ 5/2D</li>
+                <li class="list-group-item">11.00-13.00 $ 5/2D</li>
+                <li class="list-group-item">11.00-13.00 $ 5/2D</li>
+                <li class="list-group-item">11.00-13.00 $ 5/2D</li>
+            </ul>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<div class="boddom_part">
+
+</div>
+
+
+</main>
+
+<script src="script.js"></script>
+<script>
+    // Function to get the current date in the format "день месяц"
+    function getCurrentDate() {
+        var currentDate = new Date();
+        var day = currentDate.getDate();
+        var monthIndex = currentDate.getMonth();
+        var months = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        var month = months[monthIndex];
+        return "Today, " + day + " " + month;
+    }
+
+    // Function to update the button text with the current date
+    function updateButtonWithDate() {
+        var button = document.getElementById('dateButton');
+        var button1 = document.getElementById('dateButton1');
+        button.textContent = getCurrentDate();
+        button1.textContent = getCurrentDate();
+    }
+
+    // Call the function to update the button text when the page loads
+    updateButtonWithDate();
+
+    // Optionally, you can update the button text periodically using setInterval
+    // setInterval(updateButtonWithDate, 1000); // Update every second
+</script>
+</body>
+</html>
